@@ -95,7 +95,11 @@ function ($scope, $stateParams, $http, $rootScope) {
 	    return $scope.shownGroup === group;
 	  };
 	
-	
+	$scope.findAnime = function(){
+		$http.get('http://anilist.co/api/anime/'+$stateParams.aID+'/page?access_token='+$rootScope.access_token).then(function(response){
+			$scope.animedetail = response.data;
+		});
+	}
 	$http.get('http://anilist.co/api/browse/anime?sort=popularity-desc&year=2017&season=Winter&airing_data=true&page=1&access_token='+$rootScope.access_token).then(function(response){
 		$scope.anime = response.data;
 	});
