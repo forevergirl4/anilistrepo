@@ -1,0 +1,40 @@
+.home-view {
+    background-color: rgb(56, 76, 132);
+}
+
+.logo {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.placeholder-div {
+    margin: 0px;
+    line-height: 250px;
+    background-color: rgb(232, 235, 239);
+    text-align: center;
+}
+
+.placeholder-icon {
+    font-size: 64px;
+    color: rgb(136, 136, 136);
+    vertical-align: middle;
+}
+
+.register-div {
+    padding: 1px 5% 5% 5%; 
+}
+
+.register-div > h4 {
+    color: rgb(236, 236, 236);
+    font-weight: 600;
+    text-align: center;
+}
+
+.register-div > h2 {
+     color: rgb(236, 236, 236);
+    font-weight: 600;
+    text-align: center;
+}
