@@ -1,13 +1,14 @@
-<ion-view title="Manga" id="page3" style="">
+<ion-view title="Manga - AniList: UNOFFICIAL Mobile Application" id="page3" style="">
   <ion-content padding="true" class="has-header">
     <form id="manga-form5" class="list">
       <label class="item item-input" id="manga-search2" style="">
         <i class="icon ion-search placeholder-icon"></i>
         <input placeholder="Search for manga" type="search">
       </label>
-      <ion-item class="item-thumbnail-left" id="manga-list-item7" style="">
-        <h2>Title of Manga</h2>
-        <p>Type | Rating</p>
+      <ion-item class="item-thumbnail-left" id="manga-list-item7" ng-repeat="list in manga">
+        <img ng-src="img/{{ item.shortname }}_tn.jpg" alt="{{ item.name }} Photo">
+        <h2>{{list.title_english}}</h2>
+        <p>{{list.type}} | {{list.popularity}}</p>
       </ion-item>
     </form>
   </ion-content>
