@@ -40,6 +40,16 @@ angular.module('app.routes', [])
     }
   })
 
+ .state('tabsController.reviewdetail', {
+    url: '/reviewdetail',
+    views: {
+      'tab1': {
+        templateUrl: 'templates/reviewdetail.html',
+        controller: 'animeCtrl'
+      }
+    }
+  })  
+  
   .state('tabsController.animedetail', {
     url: '/animedetail',
     views: {
