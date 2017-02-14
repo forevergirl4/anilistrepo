@@ -5,9 +5,9 @@
         <i class="icon ion-search placeholder-icon"></i>
         <input placeholder="Search for anime" type="search">
       </label>
-      <ion-item class="item-thumbnail-left" id="anime-list-item2" style="">
-        <h2>Title of Anime</h2>
-        <p>Type | Popularity</p>
+      <ion-item class="item-thumbnail-left" id="anime-list-item2" ng-repeat="list in anime">
+        <h2 ng-bind="list.title_english"></h2>
+        <p>{{list.type}} | {{list.popularity}}</p>
       </ion-item>
     </form>
   </ion-content>
