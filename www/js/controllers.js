@@ -61,7 +61,6 @@ function ($scope, $stateParams, $http, $rootScope) {
 	
 	$http.get('http://anilist.co/api/browse/anime?sort=popularity-desc&year=2017&season=Winter&airing_data=true&page=1&access_token='+$rootScope.access_token).then(function(response){
 		$scope.anime = response.data;
-		console.log($scope.anime);
 	});
 
 }])
