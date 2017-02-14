@@ -7,7 +7,7 @@
       <i class="icon ion-image placeholder-icon"></i>
       <h4>Never miss an episode of Anime again.</h4>
       <span>With live countdowns and notifications for airing Anime, and links to streaming episodes.</span>
-      <span>Episode {{featured.airing.next_episode}} of {{featured.title_english}} airs in</span>
+      <span class="countdown" ng-if="featured.airing.countdown">Episode {{featured.airing.next_episode}} of {{featured.title_english}} airs in</span>
       <timer interval="1000" countdown="featured.airing.countdown"><span ng-show="days!= 0">{{days}} days</span> <span ng-show="hours != 0">{{hours}} hours</span> <span ng-show="minutes != 0" class="">{{minutes}} minutes</span> <span>{{seconds}} seconds</span></timer>
     </div>
     <ion-list id="home-list13">
@@ -21,17 +21,17 @@
     <div class="register-div">
     <h4 id="home-heading4">Latest Review</h4>
     <ion-list id="home-list14">
-      <ion-item class="item-thumbnail-left" id="home-list-item31" style="">
-        <h2>Review Article</h2>
-        <p style="white-space:normal;">Preview of the article content</p>
+      <ion-item class="item-thumbnail-left" id="home-list-item31" ng-repeat="review in latest">
+        <h2>{{review.anime.title_english}}</h2>
+        <p style="white-space:normal;">{{review.summary}}</p>
       </ion-item>
     </ion-list>
     </div>
     <div class="register-div">  
     <h4 id="home-heading5">Trending Anime &amp; Manga</h4>
     <ion-list id="home-list16">
-      <ion-item class="item-thumbnail-left" id="home-list-item33" style="">
-        <h2>Title of Anime/Manga</h2>
+      <ion-item class="item-thumbnail-left" id="home-list-item33" ng-repeat="trend in trending">
+        <h2>{{trend.title_english}}</h2>
       </ion-item>
     </ion-list>
     </div>
