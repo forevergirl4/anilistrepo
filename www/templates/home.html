@@ -5,6 +5,10 @@
     </div>
     <div class="placeholder-div">
       <i class="icon ion-image placeholder-icon"></i>
+      <h4>Never miss an episode of Anime again.</h4>
+      <span>With live countdowns and notifications for airing Anime, and links to streaming episodes.</span>
+      <span>Episode {{featured.airing.next_episode}} of {{featured.title_english}} airs in</span>
+      <timer interval="1000" countdown="featured.airing.countdown"><span ng-show="days!= 0">{{days}} days</span> <span ng-show="hours != 0">{{hours}} hours</span> <span ng-show="minutes != 0" class="">{{minutes}} minutes</span> <span>{{seconds}} seconds</span></timer>
     </div>
     <ion-list id="home-list13">
       <ion-item id="home-list-item25" style="">Custom List</ion-item>

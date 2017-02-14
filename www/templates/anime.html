@@ -6,7 +6,7 @@
         <input placeholder="Search for anime" type="search">
       </label>
       <ion-item class="item-thumbnail-left" id="anime-list-item2" ng-repeat="list in anime">
-        <img ng-src="img/{{ item.shortname }}_tn.jpg" alt="{{ item.name }} Photo">
+        <img ng-src="{{list.image_url_med}}" alt="{{list.title_english}}">
         <h2 ng-bind="list.title_english"></h2>
         <p>{{list.type}} | {{list.popularity}}</p>
       </ion-item>
