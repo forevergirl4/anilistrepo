@@ -12,6 +12,15 @@ function ($scope, $stateParams, $http, $rootScope) {
 		$http.get('http://anilist.co/api/anime/21?access_token='+$rootScope.access_token).then(function(response){
 			$scope.featured = response.data;
 		}, 4000);	
+
+		$http.get('http://anilist.co/api/reviews/latest?limit=8&access_token='+$rootScope.access_token).then(function(response){
+			$scope.latest = response.data.anime;
+		});
+
+		$http.get('http://anilist.co/api/series/trending?access_token='+$rootScope.access_token).then(function(response){
+			$scope.trending = response.data;
+		});
+		
 	});
 
 
@@ -61,6 +70,7 @@ function ($scope, $stateParams, $rootScope, $http) {
 		$scope.manga = response.data;
 	});
 
+
 }])
    
 .controller('animeCtrl', ['$scope', '$stateParams', '$http', '$rootScope', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -88,7 +98,6 @@ function ($scope, $stateParams, $http, $rootScope) {
 	
 	$http.get('http://anilist.co/api/browse/anime?sort=popularity-desc&year=2017&season=Winter&airing_data=true&page=1&access_token='+$rootScope.access_token).then(function(response){
 		$scope.anime = response.data;
-		console.log($scope.anime);
 	});
 
 }])

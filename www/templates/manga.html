@@ -3,9 +3,9 @@
     <form id="manga-form5" class="list">
       <label class="item item-input" id="manga-search2" style="">
         <i class="icon ion-search placeholder-icon"></i>
-        <input placeholder="Search for manga" type="search">
+        <input placeholder="Search for manga" type="search" ng-model="search">
       </label>
-      <ion-item class="item-thumbnail-left" id="manga-list-item7" ng-repeat="list in manga" ui-sref="tabsController.mangadetail({ mID:list.id })">
+      <ion-item class="item-thumbnail-left" id="manga-list-item7" ng-repeat="list in manga | filter:search" ui-sref="tabsController.mangadetail({ mID:list.id })">
         <img ng-src="{{list.image_url_med}}" alt="{{list.title_english}}">
         <h2>{{list.title_english}}</h2>
         <p>{{list.type}} | {{list.popularity}}</p>
