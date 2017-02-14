@@ -5,7 +5,7 @@
         <i class="icon ion-search placeholder-icon"></i>
         <input placeholder="Search for manga" type="search">
       </label>
-      <ion-item class="item-thumbnail-left" id="manga-list-item7" ng-repeat="list in manga">
+      <ion-item class="item-thumbnail-left" id="manga-list-item7" ng-repeat="list in manga" ui-sref="tabsController.mangadetail({ mID:list.id })">
         <img ng-src="{{list.image_url_med}}" alt="{{list.title_english}}">
         <h2>{{list.title_english}}</h2>
         <p>{{list.type}} | {{list.popularity}}</p>

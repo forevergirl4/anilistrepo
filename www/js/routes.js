@@ -41,7 +41,7 @@ angular.module('app.routes', [])
   })
 
   .state('tabsController.animedetail', {
-    url: '/animedetail',
+    url: '/animedetail/:aID',
     views: {
       'tab3': {
         templateUrl: 'templates/animedetail.html',
@@ -50,11 +50,11 @@ angular.module('app.routes', [])
     }
   })
   .state('tabsController.mangadetail', {
-    url: '/mangadetail',
+    url: '/mangadetail/:mID',
     views: {
-      'tab3': {
+      'tab2': {
         templateUrl: 'templates/mangadetail.html',
-        controller: 'animeCtrl'
+        controller: 'mangaCtrl'
       }
     }
   })

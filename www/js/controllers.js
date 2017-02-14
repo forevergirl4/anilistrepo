@@ -28,6 +28,33 @@ function ($scope, $stateParams, $rootScope, $http) {
 			$rootScope.access_token = response.data.access_token;
 		});
 	}
+
+	/*$scope.groups = [];
+  		for (var i=0; i<10; i++) {
+    		$scope.groups[i] = {
+      			name: i,
+      			items: []
+    		};
+    	for (var j=0; j<3; j++) {
+      		$scope.groups[i].items.push(i + '-' + j);
+    	}
+  	}*/
+  
+  /*
+   * if given group is the selected group, deselect it
+   * else, select the given group
+   */
+	  $scope.toggleGroup = function(group) {
+	    if ($scope.isGroupShown(group)) {
+	      $scope.shownGroup = null;
+	    } else {
+	      $scope.shownGroup = group;
+	    }
+	  };
+	  $scope.isGroupShown = function(group) {
+	    return $scope.shownGroup === group;
+	  };
+
 	
 	
 	$http.get('http://anilist.co/api/browse/manga?sort=score-desc&access_token='+$rootScope.access_token).then(function(response){
@@ -47,6 +74,16 @@ function ($scope, $stateParams, $http, $rootScope) {
 			$rootScope.access_token = response.data.access_token;
 		});
 	}
+	$scope.toggleGroup = function(group) {
+	    if ($scope.isGroupShown(group)) {
+	      $scope.shownGroup = null;
+	    } else {
+	      $scope.shownGroup = group;
+	    }
+	  };
+	  $scope.isGroupShown = function(group) {
+	    return $scope.shownGroup === group;
+	  };
 	
 	
 	$http.get('http://anilist.co/api/browse/anime?sort=popularity-desc&year=2017&season=Winter&airing_data=true&page=1&access_token='+$rootScope.access_token).then(function(response){
