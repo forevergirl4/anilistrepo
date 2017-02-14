@@ -1,4 +1,4 @@
-<ion-view title="Anime" id="page4" style="">
+<ion-view title="Anime - AniList: UNOFFICIAL Mobile Application" id="page4" style="">
   <ion-content padding="true" class="has-header">
     <form id="anime-form1" class="list">
       <label class="item item-input" id="anime-search1" style="">
@@ -6,6 +6,7 @@
         <input placeholder="Search for anime" type="search">
       </label>
       <ion-item class="item-thumbnail-left" id="anime-list-item2" ng-repeat="list in anime">
+        <img ng-src="img/{{ item.shortname }}_tn.jpg" alt="{{ item.name }} Photo">
         <h2 ng-bind="list.title_english"></h2>
         <p>{{list.type}} | {{list.popularity}}</p>
       </ion-item>
