@@ -6,12 +6,22 @@
     background-color: rgb(56, 76, 132);
 }
 
+.placeholder-div > .logo-placeholder > h4 {
+    color: #fff;
+    margin-bottom: none;
+}
+
 .logo {
     display: block;
     width: 100%;
     height: auto;
     margin-left: auto;
     margin-right: auto;
+}
+
+.logo-placeholder {
+    padding: 10% 5%;
+    background-color: rgb(24, 31, 41);
 }
 
 .placeholder-div {
@@ -21,7 +31,7 @@
     text-align: center;
 }
 
-.placeholder-icon {
+.placeholder-icon-home {
     font-size: 64px;
     color: rgb(136, 136, 136);
     vertical-align: middle;

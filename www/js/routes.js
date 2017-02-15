@@ -41,11 +41,11 @@ angular.module('app.routes', [])
   })
 
  .state('tabsController.reviewdetail', {
-    url: '/reviewdetail',
+    url: '/reviewdetail/:rID',
     views: {
       'tab1': {
         templateUrl: 'templates/reviewdetail.html',
-        controller: 'animeCtrl'
+        controller: 'reviewCtrl'
       }
     }
   })  
