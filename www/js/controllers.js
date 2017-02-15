@@ -105,6 +105,28 @@ function ($scope, $stateParams, $http, $rootScope) {
 	});
 
 }])
+
+.controller('reviewCtrl', ['$scope', '$stateParams', '$http', '$rootScope',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams, $http, $rootScope) {
+	if(!$rootScope.access_token){
+		$http.post('https://anilist.co/api/auth/access_token', {grant_type : "client_credentials",
+		client_id : 'nerdykhaleesi25-gnvdr',
+		client_secret : 'fuC8tGrRA6tp7o9crbA7'}).then(function(response){
+			$rootScope.access_token = response.data.access_token;
+		});
+	}
+    
+    $scope.findReview = function(){
+        $http.get('http://anilist.co/api/anime/review/'+$stateParams.rID+'?access_token='+$rootScope.access_token).then(function(response){
+            $scope.reviewdetail = response.data;
+        });
+    }
+    
+	
+
+}])
       
 .controller('mainMenuCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function

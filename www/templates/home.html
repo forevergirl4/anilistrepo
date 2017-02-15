@@ -1,15 +1,18 @@
 <ion-view title="Home - AniList: UNOFFICIAL Mobile Application" id="page2" class="home-view">
   <ion-content padding="true" class="has-header">
-    <div>
+    <div class="logo-placeholder">
       <img src="img/kXFN4yQXqy13byu66aHg_logo_anilist.png" class="logo">
     </div>
     <div class="placeholder-div">
-      <i class="icon ion-image placeholder-icon"></i>
+<!--      <i class="icon ion-image placeholder-icon-home"></i>-->
+    <div class="logo-placeholder">       
       <h4>Never miss an episode of Anime again.</h4>
-      <span>With live countdowns and notifications for airing Anime, and links to streaming episodes.</span>
+        <span>With live countdowns and notifications for airing Anime, and links to streaming episodes.</span>
       <span class="countdown" ng-if="featured.airing.countdown">Episode {{featured.airing.next_episode}} of {{featured.title_english}} airs in</span>
       <timer interval="1000" countdown="featured.airing.countdown"><span ng-show="days!= 0">{{days}} days</span> <span ng-show="hours != 0">{{hours}} hours</span> <span ng-show="minutes != 0" class="">{{minutes}} minutes</span> <span>{{seconds}} seconds</span></timer>
+    </div>     
     </div>
+<!--
     <ion-list id="home-list13">
       <ion-item id="home-list-item25" style="">Custom List</ion-item>
       <ion-item id="home-list-item26" style="">6+ Scoring systems</ion-item>
@@ -18,12 +21,14 @@
       <ion-item id="home-list-item28" style="">Manhua &amp; Manhwa</ion-item>
       <ion-item id="home-list-item30" style="">Coming Soon</ion-item>
     </ion-list>
+-->
     <div class="register-div">
     <h4 id="home-heading4">Latest Review</h4>
     <ion-list id="home-list14">
-      <ion-item class="item-thumbnail-left" id="home-list-item31" ng-repeat="review in latest">
+      <ion-item class="item-thumbnail-left item-text-wrap" id="home-list-item31" ng-repeat="review in latest" ui-sref="tabsController.reviewdetail({rID:review.id})">
+        <img ng-src="{{review.anime.image_url_med}}" alt="{{list.title_english}}">  
         <h2>{{review.anime.title_english}}</h2>
-        <p style="white-space:normal;">{{review.summary}}</p>
+        <p style="white-space:normal;">{{review.summary | limitTo: 80}}{{review.summary.length > 80 ? '&hellip;' : ''}}</p>
       </ion-item>
     </ion-list>
     </div>
