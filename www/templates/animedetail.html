@@ -1,0 +1,152 @@
+<ion-view ng-init="findAnime()">
+  <ion-content>
+    <ion-list class="list-inset">
+      <div class="Info">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <!-- <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp; -->
+            INFO
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Type:  {{animedetail.type}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Episodes:  {{animedetail.total_episodes}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Status: {{animedetail.airing_status}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Start: {{animedetail.start_date | date:"medium"}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Season: {{animedetail.season}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Avg Score: {{animedetail.average_score}}%
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Mean Score: {{animedetail.mean_score}}%
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Popularity: {{animedetail.popularity}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Main Studio: {{animedetail.studio.studio_name}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Duration: {{animedetail.duration}} mins.
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             <span> Genres:
+              <div ng-repeat="genre in animedetail.genres">
+               {{genre}}
+              </div>
+             </span>
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+            Hashtag: {{animedetail.hashtag}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+            Romaji: {{animedetail.title_romaji}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+            English: {{animedetail.title_english}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+            Japanese: {{animedetail.title_japanese}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+            <span> Synonyms:
+              <div ng-repeat="synonym in animedetail.synonyms">
+                {{synonym}}
+              </div>
+            </span>
+          </ion-item>
+        </div>
+        <div class="Tags">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <!-- <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp; -->
+            TAGS
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Content Here
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Content Here
+          </ion-item>
+        </div>
+        <div class="Desc">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <!-- <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp; -->
+            DESCRIPTION
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Content Here
+          </ion-item>
+        </div>
+        <div class="rel">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <!-- <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp; -->
+            RELATIONS
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Content Here
+          </ion-item>
+        </div>
+        <div class="staff">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <!-- <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp; -->
+            STAFF
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Content Here
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Content Here
+          </ion-item>
+        </div>
+        <div class="rank">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <!-- <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp; -->
+            RANKINGS
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Content Here
+          </ion-item>
+        </div>
+        <div class="users">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <!-- <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp; -->
+            USERS
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Content Here
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+             Content Here
+          </ion-item>
+        </div>
+    </ion-list>
+  </ion-content>
+</ion-view>
