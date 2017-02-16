@@ -1,4 +1,4 @@
-<ion-view>
+<ion-view ng-init="findManga()">
   <ion-content>
     <ion-list class="list-inset">
       <div class="Info">
@@ -9,11 +9,61 @@
             &nbsp; -->
             INFO
           </ion-item>
-          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
-             Content Here
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-hide="!animedetail.type">
+             Type:  {{animedetail.type}}
           </ion-item>
-          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
-             Content Here
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-hide="!animedetail.total_episodes">
+             Episodes:  {{animedetail.total_episodes}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-hide="!animedetail.airing_status">
+             Status: {{animedetail.airing_status}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-hide="!animedetail.start_date">
+             Start: {{animedetail.start_date | date:"medium"}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-hide="!animedetail.season">
+             Season: {{animedetail.season}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-hide="!animedetail.average_score">
+             Avg Score: {{animedetail.average_score}}%
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-hide="!animedetail.mean_score">
+             Mean Score: {{animedetail.mean_score}}%
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-hide="!animedetail.popularity">
+             Popularity: {{animedetail.popularity}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-hide="!animedetail.studio">
+             Main Studio: {{animedetail.studio.studio_name}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-hide="!animedetail.duration">
+             Duration: {{animedetail.duration}} mins.
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-hide="!animedetail.genres">
+             <span> Genres:
+              <div ng-repeat="genre in animedetail.genres">
+               {{genre}}
+              </div>
+             </span>
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-hide="!animedetail.hashtag">
+            Hashtag: {{animedetail.hashtag}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-hide="!animedetail.title_romaji">
+            Romaji: {{animedetail.title_romaji}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-hide="!animedetail.title_english">
+            English: {{animedetail.title_english}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-hide="!animedetail.title_japanese">
+            Japanese: {{animedetail.title_japanese}}
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-hide="!animedetail.synonyms">
+            <span> Synonyms:
+              <div ng-repeat="synonym in animedetail.synonyms">
+                {{synonym}}
+              </div>
+            </span>
           </ion-item>
         </div>
         <div class="Tags">
@@ -24,11 +74,9 @@
             &nbsp; -->
             TAGS
           </ion-item>
-          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
-             Content Here
-          </ion-item>
-          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
-             Content Here
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-repeat="tag in animedetail.tags">
+             {{tag.name}} : {{tag.votes}}%
+             <div>{{tag.description}}</div>
           </ion-item>
         </div>
         <div class="Desc">
@@ -40,7 +88,7 @@
             DESCRIPTION
           </ion-item>
           <ion-item class="item-accordion" ng-show="isGroupShown(group)">
-             Content Here
+             {{animedetail.description}}
           </ion-item>
         </div>
         <div class="rel">
@@ -51,8 +99,20 @@
             &nbsp; -->
             RELATIONS
           </ion-item>
-          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
-             Content Here
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-repeat="relation in animedetail.relations">
+            {{relation.relation_type}} : {{relation.title_romaji}}
+          </ion-item>
+        </div>
+        <div class="rel">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <!-- <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp; -->
+            CHARACTERS
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-repeat="character in animedetail.characters">
+            <img ng-src="{{character.image_url_med}}"></img>  {{character.name_first}}  {{character.name_last}} dubbed by <span ng-repeat="actor in character.actor"><img ng-src="{{actor.image_url_med}}"></img> {{actor.name_first}} {{actor.name_last}}</span>
           </ion-item>
         </div>
         <div class="staff">
@@ -63,11 +123,11 @@
             &nbsp; -->
             STAFF
           </ion-item>
-          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
-             Content Here
-          </ion-item>
-          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
-             Content Here
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-repeat="staff in animedetail.staff">
+             <span><img ng-src="{{staff.image_url_med}}"></img>
+              {{staff.name_first}}
+             <br>{{staff.name_last}}
+             </span>
           </ion-item>
         </div>
         <div class="rank">
@@ -78,20 +138,8 @@
             &nbsp; -->
             RANKINGS
           </ion-item>
-          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
-             Content Here
-          </ion-item>
-        </div>
-        <div class="score">
-          <ion-item class="item-stable"
-                    ng-click="toggleGroup(group)"
-                    ng-class="{active: isGroupShown(group)}">
-              <!-- <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-            &nbsp; -->
-            SCORE DISTRIBUTION
-          </ion-item>
-          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
-             Content Here
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-repeat="rank in animedetail.rankings">
+            #{{rank.rank}} {{rank.type_string}}
           </ion-item>
         </div>
         <div class="users">
@@ -101,9 +149,6 @@
               <!-- <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
             &nbsp; -->
             USERS
-          </ion-item>
-          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
-             Content Here
           </ion-item>
           <ion-item class="item-accordion" ng-show="isGroupShown(group)">
              Content Here
