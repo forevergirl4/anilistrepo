@@ -109,6 +109,12 @@ function ($scope, $stateParams, $http, $rootScope) {
 				
 			});
 		}
+		
+		$scope.bar = {
+			labels : ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
+			data : [ 10, 0, 0, 25, 400, 85, 444, 90, 356, 100]
+		};
+		
 
 		$http.get('http://anilist.co/api/browse/anime?sort=popularity-desc&year=2017&season=Winter&airing_data=true&page=1&access_token='+$rootScope.access_token).then(function(response){
 			$scope.anime = response.data;

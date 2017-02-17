@@ -142,6 +142,21 @@
             #{{rank.rank}} {{rank.type_string}}
           </ion-item>
         </div>
+        <div class="scoredis">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <!-- <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp; -->
+            SCORE DISTRIBUTION
+          </ion-item>
+          <ion-item class="item-accordion" ng-show="isGroupShown(group)">
+            <div id="bar-chart">
+              <canvas id="bar" class="chart chart-bar" data="bar.data" labels="bar.labels" series="bar.series"
+                options="bar.options"></canvas>
+            </div>
+          </ion-item>
+        </div>
         <div class="users">
           <ion-item class="item-stable"
                     ng-click="toggleGroup(group)"
