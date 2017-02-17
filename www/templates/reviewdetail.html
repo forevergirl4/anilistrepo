@@ -2,7 +2,7 @@
   <ion-content padding="true" class="has-header">
       <ion-item class="item-text-wrap">
         <h2>{{reviewdetail.anime.title_english}}</h2>
-        <p style="white-space:normal;">{{reviewdetail.summary}}</p>
+        <markdown ng-model="reviewdetail.text" style="white-space:normal;"></markdown>
       </ion-item>
   </ion-content>
 </ion-view>

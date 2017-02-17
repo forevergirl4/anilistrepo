@@ -36,6 +36,8 @@ function ($scope, $stateParams, $rootScope, $http) {
 		client_secret : 'fuC8tGrRA6tp7o9crbA7'}).then(function(response){
 			$rootScope.access_token = response.data.access_token;
 		});
+
+		$scope.findManga();
 	}
 
 	/*$scope.groups = [];
@@ -63,29 +65,39 @@ function ($scope, $stateParams, $rootScope, $http) {
 	  $scope.isGroupShown = function(group) {
 	    return $scope.shownGroup === group;
 	  };
-
-	  $scope.bar = {
-			labels : ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
-			data : [ 10, 0, 0, 25, 400, 85, 444, 90, 356, 100]
-		};
-
-		$scope.pie = {
-		labels : ['Completed', 'Plan to watch', 'Watching', 'On-hold', 'Dropped'],
-		data : [ 10, 85, 90, 356, 100]
-		};
-
 	
 	if($rootScope.access_token){
+
+		$scope.findManga = function(){
+			$http.get('http://anilist.co/api/manga/'+$stateParams.mID+'/page?access_token='+$rootScope.access_token).then(function(response){
+				$scope.mangadetail = response.data;
+				$scope.bar = {
+					labels : ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
+					series: ["Score Distribution"],
+					data : []
+				};
+
+				for(var i in $scope.mangadetail.score_distribution){
+					$scope.bar.data.push($scope.mangadetail.score_distribution[i]);
+				}
+
+				$scope.pie = {
+					labels : ['Completed', 'On-hold', 'Dropped', 'Plan to watch', 'Watching', ],
+					series:["User Distribution"],
+					data : []
+				};
+
+				for(var i in $scope.mangadetail.list_stats){
+					if($scope.pie.data.length<6){
+						$scope.pie.data.push($scope.mangadetail.list_stats[i]);
+					}
+				}
+			});
+		}
+
 		$http.get('http://anilist.co/api/browse/manga?sort=score-desc&access_token='+$rootScope.access_token).then(function(response){
 			$scope.manga = response.data;
 		});
-
-		$scope.findManga = function(){
-			$http.get('http://anilist.co/api/manga/'+$stateParams.aID+'/page?access_token='+$rootScope.access_token).then(function(response){
-				$scope.mangadetail = response.data;
-				
-			});
-		}
 	}
 	
 
@@ -101,6 +113,8 @@ function ($scope, $stateParams, $http, $rootScope) {
 		client_secret : 'fuC8tGrRA6tp7o9crbA7'}).then(function(response){
 			$rootScope.access_token = response.data.access_token;
 		});
+
+		$scope.findAnime();
 	}
 	$scope.toggleGroup = function(group) {
 	    if ($scope.isGroupShown(group)) {
@@ -116,19 +130,32 @@ function ($scope, $stateParams, $http, $rootScope) {
 		$scope.findAnime = function(){
 			$http.get('http://anilist.co/api/anime/'+$stateParams.aID+'/page?access_token='+$rootScope.access_token).then(function(response){
 				$scope.animedetail = response.data;
-				
+				$scope.bar = {
+					labels : ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
+					series: ["Score Distribution"],
+					data : []
+				};
+
+				for(var i in $scope.animedetail.score_distribution){
+					$scope.bar.data.push($scope.animedetail.score_distribution[i]);
+				}
+
+				$scope.pie = {
+					labels : ['Completed', 'On-hold', 'Dropped', 'Plan to watch', 'Watching', ],
+					series:["User Distribution"],
+					data : []
+				};
+
+				for(var i in $scope.animedetail.list_stats){
+					if($scope.pie.data.length<6){
+						$scope.pie.data.push($scope.animedetail.list_stats[i]);
+					}
+				}
 			});
 		}
 		
-		$scope.bar = {
-			labels : ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
-			data : [ 10, 0, 0, 25, 400, 85, 444, 90, 356, 100]
-		};
+		
 
-		$scope.pie = {
-			labels : ['Completed', 'Plan to watch', 'Watching', 'On-hold', 'Dropped'],
-			data : [ 10, 85, 90, 356, 100]
-		};
 		
 
 		$http.get('http://anilist.co/api/browse/anime?sort=popularity-desc&year=2017&season=Winter&airing_data=true&page=1&access_token='+$rootScope.access_token).then(function(response){
