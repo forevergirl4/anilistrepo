@@ -64,6 +64,16 @@ function ($scope, $stateParams, $rootScope, $http) {
 	    return $scope.shownGroup === group;
 	  };
 
+	  $scope.bar = {
+			labels : ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
+			data : [ 10, 0, 0, 25, 400, 85, 444, 90, 356, 100]
+		};
+
+		$scope.pie = {
+		labels : ['Completed', 'Plan to watch', 'Watching', 'On-hold', 'Dropped'],
+		data : [ 10, 85, 90, 356, 100]
+		};
+
 	
 	if($rootScope.access_token){
 		$http.get('http://anilist.co/api/browse/manga?sort=score-desc&access_token='+$rootScope.access_token).then(function(response){
@@ -113,6 +123,11 @@ function ($scope, $stateParams, $http, $rootScope) {
 		$scope.bar = {
 			labels : ['10', '20', '30', '40', '50', '60', '70', '80', '90', '100'],
 			data : [ 10, 0, 0, 25, 400, 85, 444, 90, 356, 100]
+		};
+
+		$scope.pie = {
+			labels : ['Completed', 'Plan to watch', 'Watching', 'On-hold', 'Dropped'],
+			data : [ 10, 85, 90, 356, 100]
 		};
 		
 

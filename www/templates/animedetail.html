@@ -1,6 +1,12 @@
 <ion-view ng-init="findAnime()">
   <ion-content>
     <ion-list class="list-inset">
+      <div class="text-center">
+        <span>ANIME TITLE</span>
+          <div class="animangadet-avatar">
+            <img src="/img/bg9xW3JnT9i7qAlJPvG1_14741592_1798072113785382_1503929337_n.png">
+          </div>
+      </div>
       <div class="Info">
           <ion-item class="item-stable"
                     ng-click="toggleGroup(group)"
@@ -152,8 +158,8 @@
           </ion-item>
           <ion-item class="item-accordion" ng-show="isGroupShown(group)">
             <div id="bar-chart">
-              <canvas id="bar" class="chart chart-bar" data="bar.data" labels="bar.labels" series="bar.series"
-                options="bar.options"></canvas>
+              <canvas id="bar" class="chart chart-bar" chart-data="data" chart-labels="labels" chart-series="series"
+                chart-options="options"></canvas>
             </div>
           </ion-item>
         </div>
@@ -166,7 +172,10 @@
             USERS
           </ion-item>
           <ion-item class="item-accordion" ng-show="isGroupShown(group)">
-             Content Here
+             <div id="bar-chart">
+                <canvas id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options">
+                </canvas> 
+              </div>
           </ion-item>
         </div>
     </ion-list>
