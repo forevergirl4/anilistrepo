@@ -4,7 +4,7 @@
       <div class="text-center">
         <span>ANIME TITLE</span>
           <div class="animangadet-avatar">
-            <img src="/img/bg9xW3JnT9i7qAlJPvG1_14741592_1798072113785382_1503929337_n.png">
+            <img ng-src="{{animedetail.image_url_lge}}">
           </div>
       </div>
       <div class="Info">
@@ -172,7 +172,7 @@
           </ion-item>
           <ion-item class="item-accordion" ng-show="isGroupShown(group)">
              <div id="bar-chart">
-                <canvas id="pie" class="chart chart-pie" chart-data="data" chart-labels="labels" chart-options="options">
+                <canvas id="pie" class="chart chart-pie" chart-data="pie.data" chart-labels="pie.labels" chart-series="pie.series">
                 </canvas> 
               </div>
           </ion-item>
