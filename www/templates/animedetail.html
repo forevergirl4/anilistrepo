@@ -2,7 +2,7 @@
   <ion-content>
     <ion-list class="list-inset">
       <div class="text-center">
-        <span>ANIME TITLE</span>
+        <span>{{lanimedetail.title_english}}</span>
           <div class="animangadet-avatar">
             <img ng-src="{{animedetail.image_url_lge}}">
           </div>
@@ -118,7 +118,12 @@
             CHARACTERS
           </ion-item>
           <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-repeat="character in animedetail.characters">
-            <img ng-src="{{character.image_url_med}}"></img>  {{character.name_first}}  {{character.name_last}} dubbed by <span ng-repeat="actor in character.actor"><img ng-src="{{actor.image_url_med}}"></img> {{actor.name_first}} {{actor.name_last}}</span>
+            <div class="row">
+                <div class="col char">
+                <img ng-src="{{character.image_url_med}}">  {{character.name_first}}  {{character.name_last}} dubbed by 
+                <span ng-repeat="actor in character.actor"><img ng-src="{{actor.image_url_med}}"> {{actor.name_first}} {{actor.name_last}}</span>                
+                </div>
+            </div>    
           </ion-item>
         </div>
         <div class="staff">
@@ -130,7 +135,7 @@
             STAFF
           </ion-item>
           <ion-item class="item-accordion" ng-show="isGroupShown(group)" ng-repeat="staff in animedetail.staff">
-             <span><img ng-src="{{staff.image_url_med}}"></img>
+             <span><img ng-src="{{staff.image_url_med}}">
               {{staff.name_first}}
              <br>{{staff.name_last}}
              </span>

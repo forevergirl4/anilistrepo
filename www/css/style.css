@@ -52,6 +52,14 @@
     font-weight: 600;
     text-align: center;
 }
+
+.char {
+    font-size: .8em;
+}
+
+.char-name {
+    color: #02a9ff;
+}
 /*
  * http://docs.angularjs.org/api/ng/directive/ngShow#usage_animations
  */
