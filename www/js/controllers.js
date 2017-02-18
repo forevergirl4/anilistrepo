@@ -11,6 +11,14 @@ function ($scope, $stateParams, $http, $rootScope) {
 			
 		$http.get('http://anilist.co/api/anime/21?access_token='+$rootScope.access_token).then(function(response){
 			$scope.featured = response.data;
+			var secondsDiff = $scope.featured.airing.countdown/1000;
+            var minutesDiff = secondsDiff/60;
+            var hoursDiff = minutesDiff/60;
+            $scope.daysDiff = Math.floor(hoursDiff/24);
+            var currentDate = new Date();
+            $scope.hours = (24-currentDate.getHours());
+            $scope.minutes = (60-currentDate.getMinutes());
+            $scope.seconds = (60-currentDate.getSeconds());
 		}, 4000);	
 
 		$http.get('http://anilist.co/api/reviews/latest?limit=8&access_token='+$rootScope.access_token).then(function(response){
