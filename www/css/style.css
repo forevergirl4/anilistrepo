@@ -78,6 +78,11 @@
     font-weight: bold;    
 }
 
+.img-char {
+    height: 100%;
+    min-height: 144px;
+    max-height: 144px;
+}
 /*
  * http://docs.angularjs.org/api/ng/directive/ngShow#usage_animations
  */
