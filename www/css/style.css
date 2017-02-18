@@ -8,7 +8,7 @@
 
 .placeholder-div > .logo-placeholder > h4 {
     color: #fff;
-    margin-bottom: none;
+    margin: none;
 }
 
 .logo {
@@ -22,6 +22,10 @@
 .logo-placeholder {
     padding: 10% 5%;
     background-color: rgb(24, 31, 41);
+    background:url(/img/reg_bg.jpg);
+    background-repeat:repeat-y;
+    background-size:100% 100%;
+    background-position:center;    
 }
 
 .placeholder-div {
@@ -42,7 +46,7 @@
 }
 
 .register-div > h4 {
-    color: rgb(236, 236, 236);
+    color: #02a9ff;
     font-weight: 600;
     text-align: center;
 }
@@ -60,6 +64,20 @@
 .char-name {
     color: #02a9ff;
 }
+
+.feature-div {
+    color: #fff;
+    white-space: normal;
+    line-height: normal;
+}
+
+.countdown-div {
+    color: #02a9ff;
+    white-space: normal;
+    line-height: normal;
+    font-weight: bold;    
+}
+
 /*
  * http://docs.angularjs.org/api/ng/directive/ngShow#usage_animations
  */

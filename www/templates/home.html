@@ -7,9 +7,17 @@
 <!--      <i class="icon ion-image placeholder-icon-home"></i>-->
     <div class="logo-placeholder">       
       <h4>Never miss an episode of Anime again.</h4>
-        <span>With live countdowns and notifications for airing Anime, and links to streaming episodes.</span>
-      <span class="countdown" ng-if="featured.airing.countdown">Episode {{featured.airing.next_episode}} of {{featured.title_english}} airs in</span>
-      <timer interval="1000" countdown="featured.airing.countdown"><span ng-show="days!= 0">{{days}} days</span> <span ng-show="hours != 0">{{hours}} hours</span> <span ng-show="minutes != 0" class="">{{minutes}} minutes</span> <span>{{seconds}} seconds</span></timer>
+        <div class="row">
+            <div class="col feature-div">
+                <p>With live countdowns and notifications for airing Anime, and links to streaming episodes.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col countdown-div">
+                  <span class="countdown" ng-if="featured.airing.countdown">Episode {{featured.airing.next_episode}} of {{featured.title_english}} airs in</span>
+                  <timer interval="1000" countdown="featured.airing.countdown"><span ng-show="days!= 0">{{days}} days</span> <span ng-show="hours != 0">{{hours}} hours</span> <span ng-show="minutes != 0" class="">{{minutes}} minutes</span> <span>{{seconds}} seconds</span></timer>            
+            </div>
+        </div>            
     </div>     
     </div>
 <!--
