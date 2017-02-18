@@ -15,10 +15,10 @@ function ($scope, $stateParams, $http, $rootScope) {
             var minutesDiff = secondsDiff/60;
             var hoursDiff = minutesDiff/60;
             $scope.daysDiff = Math.floor(hoursDiff/24);
-            var currentDate = new Date();
-            $scope.hours = (24-currentDate.getHours());
-            $scope.minutes = (60-currentDate.getMinutes());
-            $scope.seconds = (60-currentDate.getSeconds());
+            var target = new Date($scope.featured.airing.time);
+            $scope.hours = (24-target.getHours());
+            $scope.minutes = (60-target.getMinutes());
+            $scope.seconds = (60-target.getSeconds());
 		}, 4000);	
 
 		$http.get('http://anilist.co/api/reviews/latest?limit=8&access_token='+$rootScope.access_token).then(function(response){
