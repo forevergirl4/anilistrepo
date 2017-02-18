@@ -1,9 +1,9 @@
 angular.module('app.controllers', [])
   
-.controller('homeCtrl', ['$scope', '$stateParams', '$http', '$rootScope',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('homeCtrl', ['$scope', '$stateParams', '$http', '$rootScope', '$location',// The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $http, $rootScope) {
+function ($scope, $stateParams, $http, $rootScope, $location) {
 	$http.post('https://anilist.co/api/auth/access_token', {grant_type : "client_credentials",
 		client_id : 'nerdykhaleesi25-gnvdr',
 		client_secret : 'fuC8tGrRA6tp7o9crbA7'}).then(function(response){
@@ -31,6 +31,10 @@ function ($scope, $stateParams, $http, $rootScope) {
 		
 	});
 
+	$scope.goto = function(trend){
+		console.log(trend);
+		$location.path('/page1/'+trend.series_type+'detail/'+trend.id);
+	}	
 
 }])
    

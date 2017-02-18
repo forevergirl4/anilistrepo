@@ -46,7 +46,7 @@
     <div class="register-div">  
     <h4 id="home-heading5">Trending Anime &amp; Manga</h4>
     <ion-list id="home-list16">
-      <ion-item class="item-thumbnail-left" id="home-list-item33" ng-repeat="trend in trending" >
+      <ion-item class="item-thumbnail-left" id="home-list-item33" ng-repeat="trend in trending" ng-click="goto(trend)">
         <img ng-src="{{trend.image_url_med}}" alt="{{list.title_english}}"> 
         <h2>{{trend.title_english}}</h2>
       </ion-item>
